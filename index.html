@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutriPlan | Cân Bằng Dinh Dưỡng Thông Minh</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 1. HEADER (SEMANTIC HTML5) -->
+  <header class="site-header">
+    <div class="container header-container">
+      
+      <!-- LOGO NUTRIPLAN -->
+      <a href="#" class="brand-logo" onclick="switchView('home', event)">
+        <div class="logo-badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a10 10 0 0 1 10 10c0 5.5-4.5 10-10 10S2 17.5 2 12a10 10 0 0 1 10-10z"></path>
+            <path d="M12 6v6l4 2"></path>
+          </svg>
+        </div>
+        <div class="logo-text-group">
+          <span class="logo-title">Nutri<span>Plan</span></span>
+          <span class="logo-sub">Đại Học Lạc Hồng</span>
+        </div>
+      </a>
+
+      <!-- BỘ ĐIỀU CHỈNH CHẾ ĐỘ MÀU (THEME SWITCHER) -->
+      <div class="theme-controls">
+        <span class="theme-label">Giao diện:</span>
+        <div class="color-picker-group">
+          <button class="theme-dot dot-emerald active" title="Xanh Ngọc Bích (Emerald)" onclick="setTheme('emerald', event)"></button>
+          <button class="theme-dot dot-dark" title="Giao Diện Tối (Dark Mode)" onclick="setTheme('dark', event)"></button>
+          <button class="theme-dot dot-sunset" title="Cam Hoàng Hôn (Sunset)" onclick="setTheme('sunset', event)"></button>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- THANH ĐIỀU HƯỚNG GIAO DIỆN CHUYÊN BIỆT (INTERFACE NAVIGATION BAR) -->
+  <nav class="interface-navbar">
+    <div class="container">
+      <div class="nav-tab-list">
+        <button class="view-btn active" onclick="switchView('home', event)">
+          <span class="nav-icon">🏠</span> Trang Chủ
+        </button>
+        <button class="view-btn" onclick="switchView('menu', event)">
+          <span class="nav-icon">📖</span> Thực Đơn Bữa Ăn
+        </button>
+        <button class="view-btn" onclick="switchView('scan', event)">
+          <span class="nav-icon">📷</span> Quét Calo AI
+        </button>
+        <button class="view-btn" onclick="switchView('assistant', event)">
+          <span class="nav-icon">🤖</span> Trợ Lý NutriBot
+        </button>
+        <button class="view-btn" onclick="switchView('dashboard', event)">
+          <span class="nav-icon">📊</span> Hồ Sơ & Thống Kê
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 2. MAIN CONTAINER -->
+  <main>
+
+    <!-- =========================================================================
+         GIAO DIỆN 1: TRANG CHỦ MỞ RỘNG (SHOWCASE & NỘI DUNG DÀI CHI TIẾT)
+         ========================================================================= -->
+    <div id="view-home" class="view-panel active-view">
+      
+      <!-- HERO BANNER -->
+      <section class="hero-section">
+        <div class="container hero-grid">
+          <div class="hero-left">
+            <span class="highlight-badge">🥗 Ứng dụng Quản trị Bữa ăn Sinh viên LHU</span>
+            <h1>Cân Bằng Dinh Dưỡng, Nâng Tầm Thể Trạng</h1>
+            <p>Hệ thống tự động tính toán calo tiêu chuẩn theo chỉ số cơ thể, nhận diện thực phẩm qua camera AI và gợi ý thực đơn món ăn phong phú, dễ nấu mỗi ngày.</p>
+            
+            <div class="hero-cta">
+              <button class="btn btn-primary" onclick="switchView('scan', event)">Trải nghiệm Quét Ảnh AI</button>
+              <button class="btn btn-outline" onclick="switchView('menu', event)">Xem Thực Đơn Mẫu</button>
+            </div>
+            
+            <div class="hero-stats">
+              <div class="stat-mini">
+                <strong>+2,500</strong>
+                <span>Món ăn trong dữ liệu</span>
+              </div>
+              <div class="stat-mini">
+                <strong>98.5%</strong>
+                <span>Độ tin cậy calo</span>
+              </div>
+              <div class="stat-mini">
+                <strong>24/7</strong>
+                <span>NutriBot hỗ trợ</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="hero-card-stack">
+              <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=700&auto=format&fit=crop&q=80" alt="Đĩa ăn cân bằng dinh dưỡng" class="hero-featured-img">
+              <div class="floating-data-card">
+                <span class="pulse-dot"></span>
+                <div>
+                  <strong>Bữa Trưa Tiêu Chuẩn</strong>
+                  <p>540 kcal • 42g Đạm • 12g Xơ</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHÂN KHU 1: LỘ TRÌNH 4 BƯỚC CÂN BẰNG DINH DƯỠNG -->
+      <section class="process-section">
+        <div class="container">
+          <div class="section-title-box">
+            <h2>Lộ Trình Cân Bằng Dinh Dưỡng Thông Minh</h2>
+            <p>Quy trình khép kín giúp bạn dễ dàng duy trì năng lượng và sức khỏe bền vững</p>
+          </div>
+
+          <div class="process-grid">
+            <article class="process-card">
+              <div class="step-num">01</div>
+              <h3>Thiết Lập Chỉ Số</h3>
+              <p>Nhập chiều cao, cân nặng và mục tiêu thể trạng để hệ thống tính toán năng lượng BMR & TDEE chính xác.</p>
+            </article>
+
+            <article class="process-card">
+              <div class="step-num">02</div>
+              <h3>Chụp Ảnh Bữa Ăn</h3>
+              <p>Chụp ảnh đĩa thức ăn hoặc tải lên, AI tự động bóc tách từng nhóm thịt, cá, rau củ và ước tính calo.</p>
+            </article>
+
+            <article class="process-card">
+              <div class="step-num">03</div>
+              <h3>Tối Ưu Thực Đơn</h3>
+              <p>Nhận gợi ý món ăn theo từng bữa sáng - trưa - tối với nguyên liệu tươi sống, định lượng rõ ràng.</p>
+            </article>
+
+            <article class="process-card">
+              <div class="step-num">04</div>
+              <h3>Theo Dõi Tiến Trình</h3>
+              <p>Quan sát biểu đồ nạp năng lượng qua tuần và tháng để tự điều chỉnh khẩu phần phù hợp thể chất.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHÂN KHU 2: BẢNG SO SÁNH CALO CÁC NHÓM THỰC PHẨM CHÍNH -->
+      <section class="food-comparison-section">
+        <div class="container">
+          <div class="section-title-box">
+            <h2>Dữ Liệu Calo Trong Thực Phẩm Phổ Biến</h2>
+            <p>So sánh hàm lượng calo và dinh dưỡng vi lượng giữa nhóm đạm động vật và rau củ</p>
+          </div>
+
+          <div class="table-responsive-box">
+            <table class="nutrition-table">
+              <thead>
+                <tr>
+                  <th>Tên Thực Phẩm</th>
+                  <th>Phân Nhóm</th>
+                  <th>Khẩu Phần</th>
+                  <th>Calo (kcal)</th>
+                  <th>Đạm (Protein)</th>
+                  <th>Đánh Giá Dinh Dưỡng</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Má đùi gà áp chảo</strong></td>
+                  <td><span class="badge-tag tag-meat">Thịt & Cá</span></td>
+                  <td>100 g</td>
+                  <td><strong>177 kcal</strong></td>
+                  <td>24 g</td>
+                  <td>Giàu sắt và protein xây dựng cơ bắp</td>
+                </tr>
+                <tr>
+                  <td><strong>Cá hồi Na Uy tươi</strong></td>
+                  <td><span class="badge-tag tag-meat">Thịt & Cá</span></td>
+                  <td>100 g</td>
+                  <td><strong>208 kcal</strong></td>
+                  <td>20 g</td>
+                  <td>Cung cấp chất béo tốt Omega-3 cho tim mạch</td>
+                </tr>
+                <tr>
+                  <td><strong>Thăn bò nướng tiêu</strong></td>
+                  <td><span class="badge-tag tag-meat">Thịt & Cá</span></td>
+                  <td>100 g</td>
+                  <td><strong>250 kcal</strong></td>
+                  <td>26 g</td>
+                  <td>Hàm lượng kẽm và vitamin B12 cao</td>
+                </tr>
+                <tr>
+                  <td><strong>Bông cải xanh luộc</strong></td>
+                  <td><span class="badge-tag tag-veg">Rau củ quả</span></td>
+                  <td>100 g</td>
+                  <td><strong>34 kcal</strong></td>
+                  <td>2.8 g</td>
+                  <td>Rất giàu chất xơ hòa tan và vitamin C</td>
+                </tr>
+                <tr>
+                  <td><strong>Khoai lang mật hấp</strong></td>
+                  <td><span class="badge-tag tag-veg">Rau củ quả</span></td>
+                  <td>100 g</td>
+                  <td><strong>86 kcal</strong></td>
+                  <td>1.6 g</td>
+                  <td>Tinh bột hấp thu chậm, chỉ số GI thấp</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHÂN KHU 3: BỘ SƯU TẬP MÓN ĂN THỰC ĐƠN TIÊU BIỂU -->
+      <section class="home-showcase-section">
+        <div class="container">
+          <div class="section-title-box">
+            <h2>Món Ăn Nổi Bật Dành Cho Bạn</h2>
+            <p>Công thức chế biến nhanh dưới 20 phút, cân bằng dưỡng chất và tiết kiệm chi phí</p>
+          </div>
+
+          <div class="featured-dish-grid">
+            <article class="dish-card">
+              <div class="dish-thumb">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&auto=format&fit=crop&q=80" alt="Salad Ức Gà Áp Chảo">
+                <span class="dish-badge">Eat Clean</span>
+              </div>
+              <div class="dish-info">
+                <div class="dish-kcal">345 kcal • Bữa Trưa</div>
+                <h3>Salad Ức Gà Áp Chảo Sốt Mè</h3>
+                <p>Ức gà thái lát áp chảo vàng đều, hòa quyện rau xà lách tươi giòn, cà chua bi mọng nước và ngô ngọt ngọt bùi.</p>
+              </div>
+            </article>
+
+            <article class="dish-card">
+              <div class="dish-thumb">
+                <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=500&auto=format&fit=crop&q=80" alt="Cá Hồi Nướng Măng Tây">
+                <span class="dish-badge">Omega-3 Dồi Dào</span>
+              </div>
+              <div class="dish-info">
+                <div class="dish-kcal">480 kcal • Bữa Tối</div>
+                <h3>Cá Hồi Nướng Bơ Tỏi Kèm Măng Tây</h3>
+                <p>Phi lê cá hồi sốt bơ tỏi thơm lừng, dùng kèm măng tây xào giòn và khoai tây nướng thảo mộc ít dầu mỡ.</p>
+              </div>
+            </article>
+
+            <article class="dish-card">
+              <div class="dish-thumb">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&auto=format&fit=crop&q=80" alt="Bát Smoothie Quả Mọng">
+                <span class="dish-badge">Bữa Sáng Nhanh</span>
+              </div>
+              <div class="dish-info">
+                <div class="dish-kcal">280 kcal • Bữa Sáng</div>
+                <h3>Smoothie Bowl Việt Quất & Hạt Granola</h3>
+                <p>Sữa chua Hy Lạp mix quả việt quất tươi, rắc hạt chia hữu cơ và ngũ cốc yến mạch giòn rụm bổ sung năng lượng sớm.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHÂN KHU 4: FORM LIÊN HỆ & GỬI GÓP Ý TRỰC TIẾP TẠI TRANG CHỦ -->
+      <section class="contact-feedback-section">
+        <div class="container">
+          <div class="contact-box-grid">
+            <div class="contact-info-col">
+              <span class="highlight-badge">📬 Hộp Thư Liên Hệ</span>
+              <h2>Bạn Cần Tư Vấn Thực Đơn Riêng?</h2>
+              <p>Hãy gửi lời nhắn cho nhóm phát triển dự án NutriPlan tại Khoa Công nghệ Thông tin - Đại học Lạc Hồng.</p>
+              
+              <div class="contact-card-item">
+                <span class="c-icon">📧</span>
+                <div>
+                  <strong>Email sinh viên phụ trách:</strong>
+                  <p><a href="mailto:125000411@lachong.edu.vn" class="email-link">125000411@lachong.edu.vn</a></p>
+                </div>
+              </div>
+
+              <div class="contact-card-item">
+                <span class="c-icon">🎓</span>
+                <div>
+                  <strong>Sinh viên thực hiện:</strong>
+                  <p>Đặng Khánh Linh (MSSV: 125000411)</p>
+                </div>
+              </div>
+            </div>
+
+            <form class="contact-form-col" onsubmit="event.preventDefault(); alert('Cảm ơn bạn! Thông tin đã được gửi về email 125000411@lachong.edu.vn');">
+              <div class="form-group">
+                <label for="c_name">Họ và tên của bạn</label>
+                <input type="text" id="c_name" placeholder="Ví dụ: Nguyễn Văn A" required>
+              </div>
+              <div class="form-group">
+                <label for="c_email">Địa chỉ Email</label>
+                <input type="email" id="c_email" placeholder="email_cua_ban@gmail.com" required>
+              </div>
+              <div class="form-group">
+                <label for="c_content">Nội dung thắc mắc / Yêu cầu dinh dưỡng</label>
+                <textarea id="c_content" rows="4" placeholder="Nhập mục tiêu thể chất hoặc câu hỏi về calo thực phẩm..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary full-width">Gửi Lời Nhắn Đến Ban Quản Trị</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- =========================================================================
+         GIAO DIỆN 2: THỰC ĐƠN BỮA ĂN CHI TIẾT
+         ========================================================================= -->
+    <div id="view-menu" class="view-panel">
+      <section class="content-view-section">
+        <div class="container">
+          <div class="section-title-box">
+            <h2>Kế Hoạch Thực Đơn & Công Thức Nấu Nướng</h2>
+            <p>Định lượng nguyên liệu chi tiết cho từng bữa trong ngày giúp duy trì calo chuẩn</p>
+          </div>
+
+          <div class="menu-tabs-layout">
+            <article class="meal-detail-card">
+              <div class="meal-card-img">
+                <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&auto=format&fit=crop&q=80" alt="Bữa sáng bánh mì bơ trứng">
+              </div>
+              <div class="meal-card-body">
+                <div class="meal-time-tag">Bữa Sáng • 07:00 - 08:00</div>
+                <h3>Bánh Mì Ngũ Cốc Kẹp Trứng Lòng Đào & Bơ Dầm</h3>
+                <div class="nutrition-strip">
+                  <span><strong>Năng lượng:</strong> 390 kcal</span>
+                  <span><strong>Protein:</strong> 18g</span>
+                  <span><strong>Chất béo tốt:</strong> 14g</span>
+                </div>
+                <div class="recipe-guide">
+                  <h4>💡 Định lượng nguyên liệu & Cách nấu:</h4>
+                  <ul>
+                    <li>2 lát bánh mì ngũ cốc nguyên cám đem nướng giòn bề mặt bằng nồi chiên không dầu.</li>
+                    <li>2 quả trứng gà ta chiên lòng đào với 1 thìa cà phê dầu ô-liu nhiệt độ vừa.</li>
+                    <li>1/2 quả bơ sáp chín dầm nhuyễn cùng chút muối hồng, tiêu đen và vài giọt nước cốt chanh.</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <article class="meal-detail-card">
+              <div class="meal-card-img">
+                <img src="https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=600&auto=format&fit=crop&q=80" alt="Bữa trưa bò xào ớt chuông">
+              </div>
+              <div class="meal-card-body">
+                <div class="meal-time-tag">Bữa Trưa • 11:30 - 12:30</div>
+                <h3>Cơm Gạo Lứt Bò Áp Chảo Rau Củ Cầu Vồng</h3>
+                <div class="nutrition-strip">
+                  <span><strong>Năng lượng:</strong> 580 kcal</span>
+                  <span><strong>Protein:</strong> 42g</span>
+                  <span><strong>Carbs chậm:</strong> 55g</span>
+                </div>
+                <div class="recipe-guide">
+                  <h4>💡 Định lượng nguyên liệu & Cách nấu:</h4>
+                  <ul>
+                    <li>150g thăn bò thái khối vuông, ướp tiêu, tỏi băm và 1 thìa nước tương ít muối.</li>
+                    <li>1 chén cơm gạo lứt huyết rồng nấu mềm dẻo.</li>
+                    <li>Xào nhanh thịt bò trên lửa lớn cùng ớt chuông xanh đỏ và hành tây giòn ngọt trong 4 phút.</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- =========================================================================
+         GIAO DIỆN 3: PHÂN TÍCH CALO BẰNG HÌNH ẢNH
+         ========================================================================= -->
+    <div id="view-scan" class="view-panel">
+      <section class="content-view-section">
+        <div class="container">
+          <div class="section-title-box">
+            <h2>Chế Độ Phân Tích Calo Bằng Ảnh AI</h2>
+            <p>Hệ thống thị giác máy tính nhận diện khẩu phần ăn và dự đoán calo tức thì</p>
+          </div>
+
+          <div class="scan-grid-layout">
+            <div class="scan-upload-zone">
+              <div class="upload-droparea">
+                <div class="icon-camera">📷</div>
+                <h3>Tải lên hoặc Chụp ảnh đĩa thức ăn</h3>
+                <p>NutriPlan AI sẽ tự động phân tách và liệt kê từng nguyên liệu</p>
+                <div class="sample-btn-group">
+                  <span class="sample-tag">Ảnh mẫu đang quét thử nghiệm:</span>
+                  <div class="mini-sample-preview">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=150&auto=format&fit=crop&q=80" alt="Đĩa salad gà mẫu">
+                    <span>dia_an_healthy.jpg (Đã phân tích)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <article class="scan-result-card">
+              <div class="result-header">
+                <h3>Kết Quả Dự Đoán AI</h3>
+                <span class="badge-success">Độ chính xác 96.8%</span>
+              </div>
+
+              <div class="ingredient-table">
+                <div class="ing-row ing-head">
+                  <span>Nguyên liệu nhận dạng</span>
+                  <span>Khối lượng</span>
+                  <span>Calo ước tính</span>
+                </div>
+                <div class="ing-row">
+                  <span>Ức gà nướng thảo mộc</span>
+                  <span>140 g</span>
+                  <strong>230 kcal</strong>
+                </div>
+                <div class="ing-row">
+                  <span>Xà lách & Bắp cải tím</span>
+                  <span>80 g</span>
+                  <strong>18 kcal</strong>
+                </div>
+                <div class="ing-row">
+                  <span>Cà chua bi & Bắp ngọt</span>
+                  <span>50 g</span>
+                  <strong>42 kcal</strong>
+                </div>
+                <div class="ing-row">
+                  <span>Sốt mè rang ít béo</span>
+                  <span>15 ml</span>
+                  <strong>55 kcal</strong>
+                </div>
+              </div>
+
+              <div class="result-total-box">
+                <div>
+                  <small>Tổng năng lượng khẩu phần:</small>
+                  <h4>345 kcal</h4>
+                </div>
+                <button class="btn btn-primary" onclick="alert('Đã lưu khẩu phần 345 kcal vào nhật ký dinh dưỡng thành công!')">Ghi nhận vào thực đơn</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- =========================================================================
+         GIAO DIỆN 4: TRỢ LÝ NUTRIBOT
+         ========================================================================= -->
+    <div id="view-assistant" class="view-panel">
+      <section class="content-view-section">
+        <div class="container">
+          <div class="section-title-box">
+            <h2>Trợ Lý Dinh Dưỡng Ảo NutriBot</h2>
+            <p>Giải đáp thắc mắc về năng lượng món ăn, hoàn thiện hồ sơ và hướng dẫn nấu nướng</p>
+          </div>
+
+          <div class="chat-app-wrapper">
+            <div class="chat-window">
+              <div class="chat-bubble bot-msg">
+                <div class="bot-avatar">🤖</div>
+                <div class="msg-text">
+                  <p>Xin chào <strong>Khánh Linh</strong>! Mình đã rà soát chỉ số nạp tuần này. Bạn hiện đang thiếu khoảng <strong>15g chất xơ</strong> và <strong>20g đạm</strong> cho bữa tối. Bạn muốn mình gợi ý món cá áp chảo nhanh hay ức gà xào nấm?</p>
+                </div>
+              </div>
+
+              <div class="chat-bubble user-msg">
+                <div class="msg-text">
+                  <p>Gợi ý giúp mình món cá áp chảo nào chế biến nhanh dưới 15 phút với nhé!</p>
+                </div>
+              </div>
+
+              <div class="chat-bubble bot-msg">
+                <div class="bot-avatar">🤖</div>
+                <div class="msg-text">
+                  <p>Gợi ý lý tưởng dành cho bạn: <strong>Cá Chẽm Phi Lê Áp Chảo Chanh Vàng</strong> 🐟</p>
+                  <ul class="bot-bullet-list">
+                    <li><strong>Nguyên liệu:</strong> 160g cá chẽm tươi phi lê, 1/2 quả chanh vàng, muối tiêu, dầu oliu.</li>
+                    <li><strong>Cách nấu:</strong> Thấm khô mặt da cá, áp chảo phần da 4 phút trên lửa vừa cho vàng giòn, lật mặt thịt 2 phút, rưới nước cốt chanh và tắt bếp.</li>
+                    <li><strong>Năng lượng:</strong> 295 kcal • 34g Đạm tinh khiết, rất dễ tiêu hóa trước giờ ngủ!</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-bar">
+              <input type="text" placeholder="Hỏi NutriBot về calo món ăn, công thức nấu..." value="Hôm nay mình nên ăn thêm món gì để đủ chỉ tiêu?">
+              <button class="btn btn-primary">Gửi Trợ Lý AI</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- =========================================================================
+         GIAO DIỆN 5: HỒ SƠ & THỐNG KÊ
+         ========================================================================= -->
+    <div id="view-dashboard" class="view-panel">
+      <section class="content-view-section">
+        <div class="container">
+          <div class="section-title-box">
+            <h2>Hồ Sơ Sức Khỏe & Thống Kê Năng Lượng</h2>
+            <p>Theo dõi các chỉ số sinh học và biểu đồ lượng calo nạp theo tuần/tháng</p>
+          </div>
+
+          <div class="dashboard-two-col">
+            <article class="dash-card">
+              <h3>Hồ Sơ Người Dùng</h3>
+              <div class="profile-details-grid">
+                <div class="p-field">
+                  <label>Họ và tên</label>
+                  <p>Đặng Khánh Linh</p>
+                </div>
+                <div class="p-field">
+                  <label>Mã số sinh viên</label>
+                  <p>125000411</p>
+                </div>
+                <div class="p-field">
+                  <label>Email liên hệ</label>
+                  <p><a href="mailto:125000411@lachong.edu.vn" class="email-link">125000411@lachong.edu.vn</a></p>
+                </div>
+                <div class="p-field">
+                  <label>Chiều cao / Cân nặng</label>
+                  <p>162 cm / 48 kg</p>
+                </div>
+                <div class="p-field">
+                  <label>Chỉ số thể trọng BMI</label>
+                  <p class="bmi-tag">18.3 (Cân đối)</p>
+                </div>
+                <div class="p-field">
+                  <label>Mục tiêu thiết lập</label>
+                  <p class="target-highlight">Duy trì cân nặng & Tăng cơ nhẹ</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="dash-card">
+              <h3>Biểu Đồ Nạp Calo Theo Tuần</h3>
+              <div class="analytics-chart">
+                <div class="chart-bar-group">
+                  <div class="bar-fill" style="--val: 68%;"><span>1,680</span></div>
+                  <label>Thứ 2</label>
+                </div>
+                <div class="chart-bar-group">
+                  <div class="bar-fill" style="--val: 85%;"><span>1,850</span></div>
+                  <label>Thứ 3</label>
+                </div>
+                <div class="chart-bar-group">
+                  <div class="bar-fill" style="--val: 72%;"><span>1,720</span></div>
+                  <label>Thứ 4</label>
+                </div>
+                <div class="chart-bar-group active-target">
+                  <div class="bar-fill" style="--val: 92%;"><span>1,920</span></div>
+                  <label>Thứ 5</label>
+                </div>
+                <div class="chart-bar-group">
+                  <div class="bar-fill" style="--val: 78%;"><span>1,780</span></div>
+                  <label>Thứ 6</label>
+                </div>
+                <div class="chart-bar-group">
+                  <div class="bar-fill" style="--val: 88%;"><span>1,890</span></div>
+                  <label>Thứ 7</label>
+                </div>
+                <div class="chart-bar-group">
+                  <div class="bar-fill" style="--val: 70%;"><span>1,700</span></div>
+                  <label>C.Nhật</label>
+                </div>
+              </div>
+              <p class="chart-note">🎯 Mục tiêu nạp: <strong>1,850 kcal/ngày</strong> • Đã đạt <strong>95.4%</strong> chỉ tiêu tuần.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- 3. FOOTER (SEMANTIC HTML5) -->
+  <footer class="site-footer">
+    <div class="container footer-layout">
+      <div class="footer-left">
+        <strong>NutriPlan Platform • Đặng Khánh Linh (MSSV: 125000411)</strong>
+        <p>Email hỗ trợ: <a href="mailto:125000411@lachong.edu.vn" class="email-link">125000411@lachong.edu.vn</a> | Lạc Hồng University</p>
+        <p>Sản phẩm đạt chuẩn Semantic HTML5, CSS Variables, Flexbox & CSS Grid Responsive.</p>
+      </div>
+      <div class="footer-right">
+        <span>© 2026 NutriPlan. Môn Vibe Coding & Prompt Engineering.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT ĐIỀU HƯỚNG GIAO DIỆN & BẢNG MÀU -->
+  <script>
+    function switchView(viewId, event) {
+      if (event) event.preventDefault();
+
+      // Ẩn tất cả view
+      const views = document.querySelectorAll('.view-panel');
+      views.forEach(v => v.classList.remove('active-view'));
+
+      // Bỏ kích hoạt các nút trên thanh điều hướng
+      const navButtons = document.querySelectorAll('.view-btn');
+      navButtons.forEach(b => b.classList.remove('active'));
+
+      // Hiển thị view được chọn
+      const targetView = document.getElementById('view-' + viewId);
+      if (targetView) {
+        targetView.classList.add('active-view');
+      }
+
+      // Kích hoạt nút tương ứng
+      if (event && event.currentTarget.classList.contains('view-btn')) {
+        event.currentTarget.classList.add('active');
+      } else {
+        // Nếu chuyển view từ nút trong hero section
+        const matchingBtn = Array.from(navButtons).find(btn => btn.getAttribute('onclick').includes(viewId));
+        if (matchingBtn) matchingBtn.classList.add('active');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function setTheme(themeName, event) {
+      document.documentElement.setAttribute('data-theme', themeName);
+      
+      const dots = document.querySelectorAll('.theme-dot');
+      dots.forEach(d => d.classList.remove('active'));
+      if (event) event.currentTarget.classList.add('active');
+    }
+  </script>
+</body>
+</html>
+
